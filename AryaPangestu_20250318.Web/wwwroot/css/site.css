@@ -36,3 +36,22 @@
     width: 2px;
     background: #e9ecef;
 }
+
+/* Perbaikan untuk label yang terlalu tinggi */
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-select:not(:placeholder-shown) ~ label,
+.form-floating > .form-select:focus ~ label {
+    transform: scale(0.85) translateY(0.4rem) translateX(0.15rem) !important;
+    padding: 0 0.5rem;
+    height: auto;
+    margin-left: 0.125rem;
+    z-index: 1;
+    background-color: transparent !important;
+}
+
+/* Tambahan untuk memastikan perubahan diterapkan */
+.form-floating > label {
+    position: absolute !important;
+    top: 0 !important;
+}
