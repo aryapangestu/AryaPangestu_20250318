@@ -1,0 +1,109 @@
+﻿@{
+    ViewData["Title"] = "Tracking Result";
+    var shipment = ViewBag.Shipment as AryaPangestu_20250318.Data.Models.Shipment;
+    var statusHistory = ViewBag.StatusHistory as IEnumerable<AryaPangestu_20250318.Data.Models.ShipmentStatusHistory>;
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card mb-3">
+            <div class="card-header bg-primary text-white d-flex justify-content-between">
+                <h5>Tracking Number: @shipment.TrackingNumber</h5>
+                <span class="badge bg-@(shipment.CurrentStatus == "POD" ? "success" :
+                                      shipment.CurrentStatus == "On Delivery" ? "primary" :
+                                      shipment.CurrentStatus == "Shipment Pick Up" ? "info" : "secondary")">
+                    @shipment.CurrentStatus
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Recipient Information</h6>
+                        <p>
+                            @shipment.RecipientName<br />
+                        @shipment.RecipientAddress<br />
+                        @shipment.RecipientPostCode
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h6>Package Information</h6>
+                    <p>
+                        Weight: @shipment.Weight kg<br />
+                        Dimensions: @shipment.Length x @shipment.Width x @shipment.Height cm
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            <h5>Tracking History</h5>
+        </div>
+        <div class="card-body">
+            <div class="timeline">
+                @foreach (var status in statusHistory)
+                {
+                    <div class="timeline-item">
+                        <div class="timeline-marker bg-@(status.Status == "POD" ? "success" :
+                                                          status.Status == "On Delivery" ? "primary" :
+                                                          status.Status == "Shipment Pick Up" ? "info" : "secondary")"></div>
+                        <div class="timeline-content">
+                            <h6 class="mb-0">@status.Status</h6>
+                            <p class="text-muted mb-1">@status.StatusDate.ToString("yyyy-MM-dd HH:mm:ss")</p>
+                            @if (!string.IsNullOrEmpty(status.Notes))
+                            {
+                                <p class="mb-0">Notes: @status.Notes</p>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="card-footer">
+            <a asp-action="Track" class="btn btn-primary">Track Another Shipment</a>
+        </div>
+    </div>
+</div>
+</div>
+
+<style>
+    .timeline {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 20px;
+    }
+
+    .timeline-item {
+        position: relative;
+        padding-bottom: 20px;
+    }
+
+    .timeline-marker {
+        position: absolute;
+        left: -30px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+    }
+
+    .timeline-content {
+        position: relative;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .timeline-item:last-child .timeline-content {
+        border-bottom: none;
+    }
+
+    .timeline:before {
+        content: '';
+        position: absolute;
+        left: -22px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #e9ecef;
+    }
+</style>

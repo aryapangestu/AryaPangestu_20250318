@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Logistics Application</h1>
+    <p>A simple logistics application for tracking shipments and managing delivery status.</p>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Shipment Management</h5>
+                </div>
+                <div class="card-body">
+                    <p>Create and manage shipments with sender and recipient information.</p>
+                    <a asp-controller="Shipment" asp-action="Index" class="btn btn-primary">Manage Shipments</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Track Shipment</h5>
+                </div>
+                <div class="card-body">
+                    <p>Track the status of a shipment using its tracking number.</p>
+                    <a asp-controller="Shipment" asp-action="Track" class="btn btn-success">Track Shipment</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

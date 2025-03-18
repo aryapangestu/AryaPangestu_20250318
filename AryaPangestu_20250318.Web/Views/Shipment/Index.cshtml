@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AryaPangestu_20250318.Data.Models.Shipment>
+
+@{
+    ViewData["Title"] = "Shipments";
+}
+
+<h1>Shipments</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.TrackingNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.SenderName)</th>
+            <th>@Html.DisplayNameFor(model => model.RecipientName)</th>
+            <th>@Html.DisplayNameFor(model => model.CreatedDate)</th>
+            <th>@Html.DisplayNameFor(model => model.CurrentStatus)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.TrackingNumber)</td>
+                <td>@Html.DisplayFor(modelItem => item.SenderName)</td>
+                <td>@Html.DisplayFor(modelItem => item.RecipientName)</td>
+                <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
+                <td>
+                    <span class="badge bg-@(item.CurrentStatus == "POD" ? "success" :
+                                      item.CurrentStatus == "On Delivery" ? "primary" :
+                                      item.CurrentStatus == "Shipment Pick Up" ? "info" : "secondary")">
+                        @Html.DisplayFor(modelItem => item.CurrentStatus)
+                    </span>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ShipmentId" class="btn btn-sm btn-info">Details</a>
+                    <a asp-action="UpdateStatus" asp-route-id="@item.ShipmentId" class="btn btn-sm btn-warning">Update Status</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

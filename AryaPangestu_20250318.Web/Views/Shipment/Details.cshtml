@@ -1,0 +1,139 @@
+﻿@model AryaPangestu_20250318.Data.Models.Shipment
+
+@{
+    ViewData["Title"] = "Shipment Details";
+    var statusHistory = ViewBag.StatusHistory as IEnumerable<AryaPangestu_20250318.Data.Models.ShipmentStatusHistory>;
+}
+
+<h1>Shipment Details</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-3">
+            <div class="card-header bg-primary text-white d-flex justify-content-between">
+                <h5>Tracking Number: @Model.TrackingNumber</h5>
+                <span class="badge bg-@(Model.CurrentStatus == "POD" ? "success" :
+                                      Model.CurrentStatus == "On Delivery" ? "primary" :
+                                      Model.CurrentStatus == "Shipment Pick Up" ? "info" : "secondary")">
+                    @Model.CurrentStatus
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Sender Information</h6>
+                        <dl class="row">
+                            <dt class="col-sm-4">Name:</dt>
+                            <dd class="col-sm-8">@Model.SenderName</dd>
+
+                            <dt class="col-sm-4">Phone:</dt>
+                            <dd class="col-sm-8">@Model.SenderPhone</dd>
+
+                            <dt class="col-sm-4">Address:</dt>
+                            <dd class="col-sm-8">@Model.SenderAddress</dd>
+
+                            <dt class="col-sm-4">Postal Code:</dt>
+                            <dd class="col-sm-8">@Model.SenderPostCode</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Recipient Information</h6>
+                        <dl class="row">
+                            <dt class="col-sm-4">Name:</dt>
+                            <dd class="col-sm-8">@Model.RecipientName</dd>
+
+                            <dt class="col-sm-4">Phone:</dt>
+                            <dd class="col-sm-8">@Model.RecipientPhone</dd>
+
+                            <dt class="col-sm-4">Address:</dt>
+                            <dd class="col-sm-8">@Model.RecipientAddress</dd>
+
+                            <dt class="col-sm-4">Postal Code:</dt>
+                            <dd class="col-sm-8">@Model.RecipientPostCode</dd>
+                        </dl>
+                    </div>
+                </div>
+                <hr />
+                <h6>Package Information</h6>
+                <dl class="row">
+                    <dt class="col-sm-2">Weight:</dt>
+                    <dd class="col-sm-4">@Model.Weight kg</dd>
+
+                    <dt class="col-sm-2">Dimensions:</dt>
+                    <dd class="col-sm-4">@Model.Length x @Model.Width x @Model.Height cm</dd>
+                </dl>
+            </div>
+            <div class="card-footer">
+                <a asp-action="UpdateStatus" asp-route-id="@Model.ShipmentId" class="btn btn-warning">Update Status</a>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5>Status History</h5>
+            </div>
+            <div class="card-body">
+                <div class="timeline">
+                    @foreach (var status in statusHistory)
+                    {
+                        <div class="timeline-item">
+                            <div class="timeline-marker bg-@(status.Status == "POD" ? "success" :
+                                                          status.Status == "On Delivery" ? "primary" :
+                                                          status.Status == "Shipment Pick Up" ? "info" : "secondary")"></div>
+                            <div class="timeline-content">
+                                <h6 class="mb-0">@status.Status</h6>
+                                <p class="text-muted mb-1">@status.StatusDate.ToString("yyyy-MM-dd HH:mm:ss")</p>
+                                @if (!string.IsNullOrEmpty(status.Notes))
+                                {
+                                    <p class="mb-0">Notes: @status.Notes</p>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .timeline {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 20px;
+    }
+
+    .timeline-item {
+        position: relative;
+        padding-bottom: 20px;
+    }
+
+    .timeline-marker {
+        position: absolute;
+        left: -30px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+    }
+
+    .timeline-content {
+        position: relative;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .timeline-item:last-child .timeline-content {
+        border-bottom: none;
+    }
+
+    .timeline:before {
+        content: '';
+        position: absolute;
+        left: -22px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #e9ecef;
+    }
+</style>
