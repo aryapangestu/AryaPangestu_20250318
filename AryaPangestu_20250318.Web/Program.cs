@@ -22,11 +22,7 @@ namespace AryaPangestu_20250318.Web
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             // Configure JWT authentication
-            builder.Services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
+            builder.Services.AddAuthentication()
             .AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
