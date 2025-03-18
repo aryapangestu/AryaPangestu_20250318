@@ -4,7 +4,7 @@
 Aplikasi ini adalah sistem logistik sederhana yang memungkinkan pengguna untuk membuat dan melacak pengiriman. Aplikasi ini memiliki fitur untuk membuat data shipment baru, memperbarui status pengiriman, dan melihat riwayat status pengiriman.
 
 ## Teknologi yang Digunakan
-- ASP.NET Core MVC
+- ASP.NET Core 8 MVC
 - SQL Server 2022
 - Entity Framework Core
 - ASP.NET Identity untuk autentikasi
