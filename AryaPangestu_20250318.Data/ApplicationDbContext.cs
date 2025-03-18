@@ -23,6 +23,8 @@ public partial class ApplicationDbContext : IdentityDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<Shipment>(entity =>
         {
             entity.ToTable("Shipment");
