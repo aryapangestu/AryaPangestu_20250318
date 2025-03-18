@@ -12,11 +12,11 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="card mb-3">
+            <div class="card">
                 <div class="card-header bg-primary text-white">
                     <h5>Shipment Information</h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body mt-3">
                     <div class="form-group mb-3">
                         <label asp-for="TrackingNumber" class="control-label"></label>
                         <input asp-for="TrackingNumber" class="form-control" placeholder="Leave empty to auto-generate" />
@@ -30,7 +30,7 @@
                 <div class="card-header bg-success text-white">
                     <h5>Sender Information</h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body mt-3">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group mb-3">
@@ -64,7 +64,7 @@
                 <div class="card-header bg-info text-white">
                     <h5>Recipient Information</h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body mt-3">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group mb-3">
@@ -98,7 +98,7 @@
                 <div class="card-header bg-warning">
                     <h5>Package Information</h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body mt-3">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group mb-3">

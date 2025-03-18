@@ -9,13 +9,15 @@
         <div class="card mb-3">
             <div class="card-header bg-primary text-white d-flex justify-content-between">
                 <h5>Tracking Number: @shipment.TrackingNumber</h5>
-                <span class="badge bg-@(shipment.CurrentStatus == "POD" ? "success" :
-                                      shipment.CurrentStatus == "On Delivery" ? "primary" :
-                                      shipment.CurrentStatus == "Shipment Pick Up" ? "info" : "secondary")">
-                    @shipment.CurrentStatus
-                </span>
+                <div class="badges">
+                    <span class="badge bg-@(shipment.CurrentStatus == "POD" ? "success" :
+                      shipment.CurrentStatus == "On Delivery" ? "primary" :
+                      shipment.CurrentStatus == "Shipment Pick Up" ? "info" : "secondary")">
+                        @shipment.CurrentStatus
+                    </span>
+                </div>
             </div>
-            <div class="card-body">
+            <div class="card-body mt-3">
                 <div class="row">
                     <div class="col-md-6">
                         <h6>Recipient Information</h6>
@@ -40,7 +42,7 @@
         <div class="card-header bg-info text-white">
             <h5>Tracking History</h5>
         </div>
-        <div class="card-body">
+        <div class="card-body mt-3">
             <div class="timeline">
                 @foreach (var status in statusHistory)
                 {

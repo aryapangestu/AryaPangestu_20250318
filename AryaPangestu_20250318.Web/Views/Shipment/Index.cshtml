@@ -29,11 +29,13 @@
                 <td>@Html.DisplayFor(modelItem => item.RecipientName)</td>
                 <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
                 <td>
-                    <span class="badge bg-@(item.CurrentStatus == "POD" ? "success" :
+                    <div class="badges">
+                        <span class="badge bg-@(item.CurrentStatus == "POD" ? "success" :
                                       item.CurrentStatus == "On Delivery" ? "primary" :
                                       item.CurrentStatus == "Shipment Pick Up" ? "info" : "secondary")">
-                        @Html.DisplayFor(modelItem => item.CurrentStatus)
-                    </span>
+                            @Html.DisplayFor(modelItem => item.CurrentStatus)
+                        </span>
+                    </div>
                 </td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.ShipmentId" class="btn btn-sm btn-info">Details</a>
