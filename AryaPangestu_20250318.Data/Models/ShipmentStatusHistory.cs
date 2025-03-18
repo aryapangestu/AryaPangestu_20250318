@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace AryaPangestu_20250318.Data.Models;
+﻿namespace AryaPangestu_20250318.Data.Models;
 
 public partial class ShipmentStatusHistory
 {

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AryaPangestu_20250318.Data.Models;
+﻿using AryaPangestu_20250318.Data.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

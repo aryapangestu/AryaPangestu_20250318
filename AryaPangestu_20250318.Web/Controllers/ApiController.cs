@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AryaPangestu_20250318.Data;
+using AryaPangestu_20250318.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using AryaPangestu_20250318.Data.Models;
-using AryaPangestu_20250318.Data;
 
 namespace AryaPangestu_20250318.Web.Controllers
 {

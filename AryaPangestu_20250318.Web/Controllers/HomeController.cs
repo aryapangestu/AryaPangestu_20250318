@@ -1,6 +1,6 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using AryaPangestu_20250318.Web.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace AryaPangestu_20250318.Web.Controllers;
 

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AryaPangestu_20250318.Data;
+using AryaPangestu_20250318.Data.Models;
+using AryaPangestu_20250318.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-using AryaPangestu_20250318.Data.Models;
-using AryaPangestu_20250318.Data;
-using AryaPangestu_20250318.Web.ViewModels;
 
 namespace AryaPangestu_20250318.Web.Controllers
 {

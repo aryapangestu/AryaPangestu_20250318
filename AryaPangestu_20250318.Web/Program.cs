@@ -1,9 +1,8 @@
+using AryaPangestu_20250318.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using AryaPangestu_20250318.Data;
 
 namespace AryaPangestu_20250318.Web
 {
