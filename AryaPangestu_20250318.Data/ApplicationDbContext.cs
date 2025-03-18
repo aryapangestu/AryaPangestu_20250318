@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using AryaPangestu_20250318.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace AryaPangestu_20250318.Data;
 
-public partial class ApplicationDbContext : DbContext
+public partial class ApplicationDbContext : IdentityDbContext
 {
     public ApplicationDbContext()
     {
