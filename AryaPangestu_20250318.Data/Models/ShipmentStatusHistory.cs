@@ -1,30 +1,19 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
-namespace AryaPangestu_20250318.Data.Models
+namespace AryaPangestu_20250318.Data.Models;
+
+public partial class ShipmentStatusHistory
 {
-    public class ShipmentStatusHistory
-    {
-        [Key]
-        public int StatusId { get; set; }
+    public int StatusId { get; set; }
 
-        [Required]
-        public int ShipmentId { get; set; }
+    public int ShipmentId { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string Status { get; set; }
+    public string Status { get; set; } = null!;
 
-        [Required]
-        [DataType(DataType.DateTime)]
-        [Display(Name = "Status Date")]
-        public DateTime StatusDate { get; set; } = DateTime.Now;
+    public DateTime StatusDate { get; set; }
 
-        [StringLength(255)]
-        public string Notes { get; set; }
+    public string? Notes { get; set; }
 
-        [ForeignKey("ShipmentId")]
-        public virtual Shipment Shipment { get; set; }
-    }
+    public virtual Shipment Shipment { get; set; } = null!;
 }

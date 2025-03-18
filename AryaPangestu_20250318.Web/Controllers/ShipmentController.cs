@@ -43,7 +43,7 @@ namespace AryaPangestu_20250318.Web.Controllers
             }
 
             // Get the status history for this shipment
-            var statusHistory = await _context.ShipmentStatusHistory
+            var statusHistory = await _context.ShipmentStatusHistories
                 .Where(s => s.ShipmentId == id)
                 .OrderByDescending(s => s.StatusDate)
                 .ToListAsync();
@@ -87,7 +87,7 @@ namespace AryaPangestu_20250318.Web.Controllers
                     Notes = "Shipment created in system"
                 };
 
-                _context.ShipmentStatusHistory.Add(initialStatus);
+                _context.ShipmentStatusHistories.Add(initialStatus);
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Details), new { id = shipment.ShipmentId });
@@ -144,7 +144,7 @@ namespace AryaPangestu_20250318.Web.Controllers
                     Notes = model.Notes
                 };
 
-                _context.ShipmentStatusHistory.Add(statusHistory);
+                _context.ShipmentStatusHistories.Add(statusHistory);
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Details), new { id = shipment.ShipmentId });
@@ -198,7 +198,7 @@ namespace AryaPangestu_20250318.Web.Controllers
                 return View();
             }
 
-            var statusHistory = await _context.ShipmentStatusHistory
+            var statusHistory = await _context.ShipmentStatusHistories
                 .Where(s => s.ShipmentId == shipment.ShipmentId)
                 .OrderByDescending(s => s.StatusDate)
                 .ToListAsync();

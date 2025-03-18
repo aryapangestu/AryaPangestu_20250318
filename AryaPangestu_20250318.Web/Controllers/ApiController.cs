@@ -51,7 +51,7 @@ namespace AryaPangestu_20250318.Web.Controllers
                 return NotFound(new { message = "Shipment not found" });
             }
 
-            var history = await _context.ShipmentStatusHistory
+            var history = await _context.ShipmentStatusHistories
                 .Where(h => h.ShipmentId == shipment.ShipmentId)
                 .OrderByDescending(h => h.StatusDate)
                 .ToListAsync();
