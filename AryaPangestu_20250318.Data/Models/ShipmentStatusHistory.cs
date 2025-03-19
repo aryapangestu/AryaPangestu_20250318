@@ -1,16 +1,28 @@
-﻿namespace AryaPangestu_20250318.Data.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace AryaPangestu_20250318.Data.Models;
 
 public partial class ShipmentStatusHistory
 {
+    [Key]
     public int StatusId { get; set; }
 
+    [Required]
     public int ShipmentId { get; set; }
 
-    public string Status { get; set; } = null!;
+    [Required]
+    [StringLength(50)]
+    public string Status { get; set; }
 
-    public DateTime StatusDate { get; set; }
+    [Required]
+    [DataType(DataType.DateTime)]
+    [Display(Name = "Status Date")]
+    public DateTime StatusDate { get; set; } = DateTime.Now;
 
-    public string? Notes { get; set; }
+    [StringLength(255)]
+    public string Notes { get; set; }
 
-    public virtual Shipment Shipment { get; set; } = null!;
+    [ForeignKey("ShipmentId")]
+    public virtual Shipment Shipment { get; set; }
 }
