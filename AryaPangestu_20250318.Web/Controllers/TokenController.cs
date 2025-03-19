@@ -35,7 +35,7 @@ namespace AryaPangestu_20250318.Web.Controllers
                 return Unauthorized(new { message = "Invalid email or password" });
             }
 
-            var userRoles = await _userManager.GetRolesAsync(user);
+            //var userRoles = await _userManager.GetRolesAsync(user);
 
             var claims = new List<Claim>
             {
@@ -44,10 +44,10 @@ namespace AryaPangestu_20250318.Web.Controllers
                 new Claim(ClaimTypes.NameIdentifier, user.Id)
             };
 
-            foreach (var userRole in userRoles)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, userRole));
-            }
+            //foreach (var userRole in userRoles)
+            //{
+            //    claims.Add(new Claim(ClaimTypes.Role, userRole));
+            //}
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

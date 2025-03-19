@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace AryaPangestu_20250318.Data.Models;
 
@@ -24,5 +25,6 @@ public partial class ShipmentStatusHistory
     public string Notes { get; set; }
 
     [ForeignKey("ShipmentId")]
+    [JsonIgnore]
     public virtual Shipment Shipment { get; set; }
 }

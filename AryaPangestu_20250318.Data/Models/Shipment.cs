@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace AryaPangestu_20250318.Data.Models;
 
@@ -79,5 +80,6 @@ public partial class Shipment
     [Display(Name = "Current Status")]
     public string CurrentStatus { get; set; } = "Created";
 
+    [JsonIgnore]
     public virtual ICollection<ShipmentStatusHistory> ShipmentStatusHistories { get; set; } = new List<ShipmentStatusHistory>();
 }
